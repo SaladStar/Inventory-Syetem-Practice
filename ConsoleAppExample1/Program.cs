@@ -29,20 +29,42 @@ namespace InventorySystem
                 "1. Inventory       2. Add a new part   3. Delete a part\n" +
                 "4. Modify a part   5. Exit");
         }
+
+
     }
+
 
     class MainPage : WelcomeMessage
     {
+
+
         static void Main(string[] args)
         {
-            string x = null; //user's option
+            String x = String.Empty; //initialize user's option
 
             WelcomeMessage message = new WelcomeMessage(); //creates message object
             message.StartMessage(); //creates the start message
 
-            x = System.Console.ReadLine(); 
-            System.Console.WriteLine(x);
+            x = System.Console.ReadLine();
+            validateUserOption(x);
         }
+        static void validateUserOption(String x)
+        {
+            try
+            {
+                int result = Int32.Parse(x);
+
+                // TODO: implement While loop until user selects valid option
+                if (result > 5 || result < 0) System.Console.WriteLine("Please choose a valid option");
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine($"Unable to parse'{x}'");
+            }
+        }
+
+
     }
+    
 
 }
